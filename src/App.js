@@ -4,6 +4,8 @@ import Meals from './components/Meals/Meals';
 import Cart from './components/Cart/Cart';
 import Header from './components/Layout/Header';
 import { useState } from 'react';
+import CartProvider from './store/cartProvider';
+
 function App() {
   const[launchCart, setlaunchCart] = useState(false)
 
@@ -14,6 +16,7 @@ function App() {
     setlaunchCart(false);
   }
   return (
+    <CartProvider>
     <div className="App">
       {launchCart && <Cart onClose ={hidecart} /> }
      <Header onshowCart={showcart}/>
@@ -21,6 +24,7 @@ function App() {
       <Meals></Meals>
      </main>
     </div>
+    </CartProvider>
   );
 }
 
